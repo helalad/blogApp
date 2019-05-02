@@ -1,3 +1,40 @@
-<p>
-  post-list-item works!
-</p>
+
+    <li [ngClass]="{'list-group-item': true,
+
+    'list-group-item-success': p.loveit >0,
+
+    'list-group-item-danger': p.loveit <0 }">
+  
+      
+        
+        
+        <div  > 
+            <form (ngSubmit)="savePost(); " >
+                <div class="form-group">
+              <label for="title" > Title : </label>
+              <input type="text" class="form-control" [(ngModel)]="p.title" id="title" name="title">
+              </div>
+              <div class="form-group">
+              <label for="content"> Content : </label>
+              
+                <textarea rows="5" cols="10" class="form-control" name="content" [(ngModel)]="p.content" id="content">
+                  </textarea>
+                </div>
+                <div class="col-xs-12"> 
+                  <input type="submit"  value="Add Post" class="btn btn-success" >
+                  </div>
+                  </form>
+            </div>
+        
+            <div  *ngIf="p.title != ''"> 
+              <h3>{{p.title}}</h3>
+             <p>{{p.content}}</p>
+                <button class="btn btn-success"
+  
+                (click)="loveit()">Love it</button>
+                <button class="btn btn-success"
+  
+                (click)="dontloveit()">Love it</button>
+              </div>
+      </li>
+
