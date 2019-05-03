@@ -9,17 +9,23 @@ import { Post } from '../post';
 })
 export class PostListComponent implements OnInit {
   p: Post  ;
-  posts: Post [] ;
+  posts: Post [] =[];
   constructor() { 
    
   }
 
   ngOnInit() {
-    this.p= new Post();
-    this.p.title ="test";
-    this.p.content ="content";
-    this.posts = [this.p];
+    this.p= new Post('','');
+    this.posts = [
+      new Post('Post 1','content .....')
+    , new Post('Post 2','content .....')
+    ];
     
+  }
+
+  savePost(){
+      this.posts.push(this.p);
+    this.p = new Post('','');
   }
 
 }

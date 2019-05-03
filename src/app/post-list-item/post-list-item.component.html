@@ -1,40 +1,16 @@
 
-    <li [ngClass]="{'list-group-item': true,
-
-    'list-group-item-success': p.loveit >0,
-
-    'list-group-item-danger': p.loveit <0 }">
+    <li [ngClass]="{'list-group-item' :true,'list-group-item-success' : p.loveIts >0 , 'list-group-item-danger' : p.loveIts < 0 }">
   
-      
-        
-        
-        <div  > 
-            <form (ngSubmit)="savePost(); " >
-                <div class="form-group">
-              <label for="title" > Title : </label>
-              <input type="text" class="form-control" [(ngModel)]="p.title" id="title" name="title">
-              </div>
-              <div class="form-group">
-              <label for="content"> Content : </label>
-              
-                <textarea rows="5" cols="10" class="form-control" name="content" [(ngModel)]="p.content" id="content">
-                  </textarea>
-                </div>
-                <div class="col-xs-12"> 
-                  <input type="submit"  value="Add Post" class="btn btn-success" >
-                  </div>
-                  </form>
-            </div>
-        
-            <div  *ngIf="p.title != ''"> 
-              <h3>{{p.title}}</h3>
-             <p>{{p.content}}</p>
+      <div class="row">  <span class="col-md-9"> <h3  >{{p.title}}</h3></span> <span class="col-md-3" >
+        {{p.created_at | date: 'short'  }}</span>
+           
+        </div>
+        <p>{{p.content}}</p> 
                 <button class="btn btn-success"
   
                 (click)="loveit()">Love it</button>
-                <button class="btn btn-success"
+                <button class="btn btn-danger"
   
-                (click)="dontloveit()">Love it</button>
-              </div>
+                (click)="dontloveit()">Don't Love it</button>
       </li>
 
