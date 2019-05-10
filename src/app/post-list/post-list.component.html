@@ -1,28 +1,9 @@
   
-          <div class=" jumbotron">
-          <form (ngSubmit)="savePost(); " >
-                <div class="form-group " >
-              <label for="title" > Title : </label>
-              <input type="text" class="form-control" [(ngModel)]="p.title" id="title" name="title">
-              </div>
-              <div class="form-group">
-              <label for="content"> Content : </label>
-              
-                <textarea rows="5" cols="10" class="form-control" name="content" [(ngModel)]="p.content" id="content">
-                  </textarea>
-                </div>
-                <div class="col-xs-12"> 
-                  <input type="submit"  value="Add Post" class="btn btn-success" >
-                  </div>
-                  </form>
-                </div>
-                  <div class="jumbotron" > 
-                      <h2>Posts</h2>      
-            
-
+ <div class="jumbotron" > 
+ <h2>Posts</h2>      
 <ul class="list-group ">
-  <app-post-list-item *ngFor="let post of posts"
-  [p]="post" ></app-post-list-item>
+  <app-post-list-item *ngFor="let post of posts;let i = index"
+  [index]="i" ></app-post-list-item>
   </ul>
 
 </div>

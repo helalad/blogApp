@@ -6,24 +6,37 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostListItemComponent } from './post-list-item/post-list-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NewPostComponent } from './new-post/new-post.component';
+import { HeaderComponent } from './header/header.component';
+import { Route, RouterModule, Routes } from '@angular/router';
+import { PostService } from './services/post-service';
 
+const routes: Routes = [
+  { path: 'newpost', component: NewPostComponent },
+  { path: 'posts', component: PostListComponent },
+  { path: '', component: PostListComponent }
+];
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
-    PostListItemComponent
+    PostListItemComponent,
+    NewPostComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
     
   ],
   schemas: [NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
